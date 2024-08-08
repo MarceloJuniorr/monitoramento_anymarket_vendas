@@ -52,8 +52,7 @@ async function inserirPedidosAny(pedido) {
       municipio: pedido['MUNICÍPIO'],
       bairro: pedido['BAIRRO'],
       status: pedido['STATUS'],
-
-
+      cod_ml: pedido['CÓDIGO DO PEDIDO (PARA PEDIDO CARRINHO)'] || ''
     };
 
     const fields = Object.keys(insertData);
@@ -87,6 +86,7 @@ async function verificacaoTabelas() {
       CREATE TABLE IF NOT EXISTS ${config.database.name}.${config.tabelaAny} (
         ordnoweb        varchar(100),
         ordnochannel    varchar(100),
+        cod_ml          varchar(100),
         date            timestamp,
         channel         varchar(100),
         sku             varchar(100),

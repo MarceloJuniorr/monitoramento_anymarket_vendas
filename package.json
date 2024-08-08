@@ -1,6 +1,6 @@
 {
-  "name": "monitoramento",
-  "version": "2.0.0",
+  "name": "monitoramento_anymarket_vendas",
+  "version": "1.0.15",
   "main": "src/server.js",
   "type": "module",
   "scripts": {

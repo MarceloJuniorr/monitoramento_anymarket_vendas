@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  monitoramento:
+    image: marcelogbjunior/monitoramento_any:1.0.6
+    container_name: monitoramento_container
+    ports:
+      - "3024:3024"
+    volumes:
+      - ".:/web"
+    environment:
+      - DB_HOST=localhost
+      - DB_PORT=3306
+      - DB_USER=nerus
+      - DB_PASS=nerus
+      - DB_NAME=sqlmonitoramento
+      - PORT=3024
+    restart: always

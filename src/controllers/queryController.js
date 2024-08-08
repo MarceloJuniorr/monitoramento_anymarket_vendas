@@ -43,15 +43,15 @@ async function inserirPedidosAny(pedido) {
       date: format(formatDate, 'yyyy-MM-dd HH:mm:ss'),
       channel: pedido['MARKETPLACE'],
       sku: pedido['SKU DO PRODUTO NO MARKETPLACE'],
-      titulo: pedido['TÍTULO PRODUTO'],
-      quantidade: pedido['QUANTIDADE'],
-      data_entrega: format(formatDateShipping, 'yyyy-MM-dd HH:mm:ss'),
-      cliente: pedido['CLIENTE'],
-      cpf_cnpj: pedido['CPF/CNPJ'],
-      transportadora: pedido['FORMA DE ENTREGA'],
-      municipio: pedido['MUNICÍPIO'],
-      bairro: pedido['BAIRRO'],
-      status: pedido['STATUS'],
+      titulo: pedido['TÍTULO PRODUTO'] || '',
+      quantidade: pedido['QUANTIDADE'] || '',
+      data_entrega: format(formatDateShipping, 'yyyy-MM-dd HH:mm:ss') || '',
+      cliente: pedido['CLIENTE'] || '',
+      cpf_cnpj: pedido['CPF/CNPJ'] || '',
+      transportadora: pedido['FORMA DE ENTREGA'] || '',
+      municipio: pedido['MUNICÍPIO'] || '',
+      bairro: pedido['BAIRRO'] || '',
+      status: pedido['STATUS'] || '',
       cod_ml: pedido['CÓDIGO DO PEDIDO (PARA PEDIDO CARRINHO)'] || ''
     };
 
@@ -84,14 +84,22 @@ async function verificacaoTabelas() {
     try {
       const sqlCriarTabelaAny = `
       CREATE TABLE IF NOT EXISTS ${config.database.name}.${config.tabelaAny} (
-        ordnoweb        varchar(100),
-        ordnochannel    varchar(100),
-        cod_ml          varchar(100),
-        date            timestamp,
-        channel         varchar(100),
-        sku             varchar(100),
-        status          varchar(100),
-        primary key     (ordnoweb, sku)
+      ordnoweb varchar(100),
+      ordnochannel varchar(100),
+      date timestamp,
+      channel varchar(100),
+      sku varchar(100),
+      titulo varchar(100),
+      quantidade varchar(100),
+      data_entrega timestamp,
+      cliente varchar(100),
+      cpf_cnpj varchar(100),
+      transportadora varchar(100),
+      municipio varchar(100),
+      bairro varchar(100),
+      status varchar(100),
+      cod_ml varchar(100),
+      primary key     (ordnoweb, sku)
         )
       `
 
